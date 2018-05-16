@@ -32,8 +32,16 @@ function renderListItem(album){
 }
 
 function addToArray(element){
+    //Add element to array
     albumArray.push(element)
     return albumArray
 }
 
+function refreshPage(){
+    location.reload()
+}
+
+
+
 form.addEventListener('submit', addToList)
+resetButton.addEventListener('click',refreshPage)
