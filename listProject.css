@@ -37,6 +37,8 @@ h1{
     margin-left: -1%;
     font-family: 'Raleway', sans-serif;
     border-radius: 4px;
+   
+    
 ;
 }
 
@@ -99,7 +101,8 @@ h2{
     background-image: url("https://cdn1.iconfinder.com/data/icons/office-36/24/Trashcan-512.png");
     height: 2rem;
     width: 2rem;
-    margin-left: 97%;
+    margin-right: 0%;
+    float: right;
     border-radius: 4px;
     background-size:cover;
     background-position: center;

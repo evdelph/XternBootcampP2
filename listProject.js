@@ -46,6 +46,7 @@ function addToArray(element){
 }
 
 function removeArrayItem(element){
+    // Remove item from array
     const elementIndex = albumArray.indexOf(element)
     if(list.textContent.includes(element)){
         albumArray.splice(element,1)
