@@ -1,10 +1,10 @@
 const form = document.querySelector('form#albumForm')
 const list = document.querySelector('#listOutput')
+
 albumArray = []
 
 const addButton = document.querySelector('#submitType')
 const resetButton = document.querySelector('#resetType')
-const removeButton = document.querySelector('#removeType')
 
 const addToList = function(ev)
 {
@@ -26,10 +26,18 @@ function renderListItem(album){
     const albumList = document.createElement('ul')
 
     listItem.textContent = album
-    albumList.appendChild(listItem)
 
+    const removeButton = document.createElement("button")
+    removeButton.classList.add('removeButton')
+
+    listItem.appendChild(removeButton)
+    albumList.appendChild(listItem)
+    removeButton.addEventListener('click',list => { albumList.removeChild(listItem)})
+    
     return albumList
 }
+
+
 
 function addToArray(element){
     //Add element to array
@@ -40,7 +48,6 @@ function addToArray(element){
 function refreshPage(){
     location.reload()
 }
-
 
 
 form.addEventListener('submit', addToList)

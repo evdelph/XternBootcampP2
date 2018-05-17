@@ -23,6 +23,7 @@ li{
     height: 30%;
     width:72%;
     margin-top:-1.75%;
+    user-select: auto;
     
 }
 
@@ -91,6 +92,26 @@ h2{
     padding: 12px 28px;
     height: 30%;
     width:70%;
+}
+
+.removeButton{
+    border-color: #ec5c52;
+    background-color: whitesmoke;
+    background-image: url("https://cdn1.iconfinder.com/data/icons/office-36/24/Trashcan-512.png");
+    height: 2rem;
+    width: 2rem;
+    margin-left: 97%;
+    border-radius: 8px;
+    background-size:cover;
+    background-position: center;
+}
+
+.removeButton:hover{
+    background-color:  #ec5c52;
+}
+
+li, .removeButton{
+    display: inline-block;
 }
 
 
