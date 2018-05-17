@@ -14,16 +14,15 @@ body{
 
 li{
     list-style: none;
-    font-size: 18px;
+    font-size: 20px;
     background-color: white;
     border: 2px solid grey;
     margin-left: 0%;
     border-radius: 4px;
-    padding: 12px 28px;
+    padding: 8px 24px;
     height: 30%;
-    width:72%;
+    width:72.5%;
     margin-top:-1.75%;
-    user-select: auto;
     
 }
 
@@ -101,7 +100,7 @@ h2{
     height: 2rem;
     width: 2rem;
     margin-left: 97%;
-    border-radius: 8px;
+    border-radius: 4px;
     background-size:cover;
     background-position: center;
 }

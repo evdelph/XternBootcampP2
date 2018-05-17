@@ -32,16 +32,24 @@ function renderListItem(album){
 
     listItem.appendChild(removeButton)
     albumList.appendChild(listItem)
-    removeButton.addEventListener('click',list => { albumList.removeChild(listItem)})
+    removeButton.addEventListener('click',list => {albumList.removeChild(listItem)
+    removeArrayItem(form.album.value)})
+
     
     return albumList
 }
 
-
-
 function addToArray(element){
     //Add element to array
     albumArray.push(element)
+    return albumArray
+}
+
+function removeArrayItem(element){
+    const elementIndex = albumArray.indexOf(element)
+    if(list.textContent.includes(element)){
+        albumArray.splice(element,1)
+    }
     return albumArray
 }
 
