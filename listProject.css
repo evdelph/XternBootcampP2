@@ -31,12 +31,14 @@ h1{
 }
 
 li{
-    background-color:white;
+    background-color: white;
     border-width: 1px;
     border-color: rgb(73, 66, 66);
     color: rgb(73, 66, 66);
     margin-left:0%;
     border-style: solid;
+    margin-bottom:5rem;
+    
 }
 
 .input-group-field1 {

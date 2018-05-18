@@ -62,8 +62,13 @@ const app = {
     const y = button.closest('.album')
     const index = app.albums.indexOf(element)
 
-    y.style.borderColor='cornflowerblue'
-    app.albums[index]['fav']=true
+    if(app.albums[index]['fav']==false){
+      y.style.borderColor='cornflowerblue'
+      app.albums[index]['fav']=true
+    } else {
+      y.style.borderColor='black'
+      app.albums[index]['fav']=false
+    }
   }
 }
 
