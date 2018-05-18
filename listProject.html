@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My Music Collection</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="listProject.css">
-
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Music Collection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="listProject.css" />
 </head>
 <body>
-    <h1>My Music Collection</h1>
-    <main>
+  <header>
+    <h1>Music Collection</h1>
+  </header>
+
+  <main>
     <form id="albumForm">
-        <p>
-            <label for="album">Enter Album: </label>
-            <input type=text name="album" autofocus placeholder="Album">
-        </p>
-        <button id="submitType" type=submit>Add</button>
-        <button id="resetType" type="reset">Reset</button>
-        <!-- <button id="removeType" type="reset">Remove</button> -->
+      <div>
+        <input
+          type="text"
+          class="input-group-field"
+          placeholder="Enter Album"
+          name="albumName"
+          autofocus
+          required
+        >
+        <input
+        type="text"
+        class="input-group-field1"
+        placeholder="Enter Artist"
+        name="artistName"
+        autofocus
+        required
+      >
+          <button
+            class="success button"
+            type="submit"
+          >
+            Add Album
+          </button>
+        </div>
+      </div>
     </form>
-    <div id='listOutput'>
-    <h2>Album List</h2>
-    </div>
-    </main>
-    <script src="listProject.js"></script>
+
+    <ul id="albumList" class="no-bullet">
+      <li class="template album grid-x align-middle">
+        <span class="albumName auto cell"></span>
+        <span class="actions shrink cell">
+          <button id="fav"class="warning button">fav</button>
+          <button id="del" class="alert button">del</button>
+        </span>
+      </li>
+    </ul>
+  </main>
+
+  <script src="listProject.js"></script>
 </body>
 </html>

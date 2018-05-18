@@ -1,63 +1,72 @@
-const form = document.querySelector('form#albumForm')
-const list = document.querySelector('#listOutput')
+const app = {
+    init(selectors) {
+      this.albums = []
+      this.number = 0
+      this.albumlist = document.querySelector(selectors.listSelector)
+      this.template = document.querySelector(selectors.templateSelector)
+  
+      document
+        .querySelector(selectors.formSelector)
+        .addEventListener('submit', ev => {
+          ev.preventDefault()
+          this.handleSubmit(ev)
+        })
+    },
+  
+    renderListItem(album) {
+      const item = this.template.cloneNode(true)
+      item.classList.remove('template')
+      item.dataset.id = album.id
+      item
+        .querySelector('.albumName')
+        .textContent = album.name
 
-albumArray = []
+      item
+        .querySelector('button#del')
+        .addEventListener('click',this.deleteItem.bind(this,album))
 
-const addButton = document.querySelector('#submitType')
-const resetButton = document.querySelector('#resetType')
+      item
+        .querySelector('button#fav')
+        .addEventListener('click',this.favItem.bind(this,album))
+  
+      return item
+    },
+  
+    handleSubmit(ev) {
+      const f = ev.target
+      const album = {
+        id: ++this.number,
+        name: f.albumName.value,
+      }
+  
+      this.albums.unshift(album)
+  
+      const item = this.renderListItem(album)
+      this.albumlist.insertBefore(item, this.albumlist.firstElementChild)
+  
+      f.reset()
+    },
 
-const addToList = function(ev)
-{
-    // Add list item to list
-    ev.preventDefault()
-    const form = ev.target
+    deleteItem(element,ev){
+      const button = ev.target
+      const x = button.closest('.album')
 
-    const album = renderListItem(form.album.value)
-    const albumArray = addToArray(form.album.value)
-    list.appendChild(album)
-    form.reset()
-    form.album.focus()
+      x.remove()
+      const index = this.albums.indexOf(element)
+      this.element.splice(index,1)
+    },
 
-}
+    favItem(element,ev){
+      const button = ev.target
+      const y = button.closest('.album')
 
-function renderListItem(album){
-    // Make individual list items
-    const listItem = document.createElement('li')
-    const albumList = document.createElement('ul')
-
-    listItem.textContent = album
-
-    const removeButton = document.createElement("button")
-    removeButton.classList.add('removeButton')
-
-    listItem.appendChild(removeButton)
-    albumList.appendChild(listItem)
-    removeButton.addEventListener('click',list => {albumList.removeChild(listItem)
-    removeArrayItem(form.album.value)})
-
-    
-    return albumList
-}
-
-function addToArray(element){
-    //Add element to array
-    albumArray.push(element)
-    return albumArray
-}
-
-function removeArrayItem(element){
-    // Remove item from array
-    const elementIndex = albumArray.indexOf(element)
-    if(list.textContent.includes(element)){
-        albumArray.splice(element,1)
+      y.style.borderColor='cornflowerblue'
     }
-    return albumArray
-}
+  }
+  
+  app.init({
+    formSelector: '#albumForm',
+    listSelector: '#albumList',
+    templateSelector: '.album.template',
+  })
 
-function refreshPage(){
-    location.reload()
-}
-
-
-form.addEventListener('submit', addToList)
-resetButton.addEventListener('click',refreshPage)
