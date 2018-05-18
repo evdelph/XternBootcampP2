@@ -37,7 +37,7 @@ const app = {
     const album = {
       id: ++this.number,
       name: f.albumName.value,
-      fav: 'false',
+      fav: false,
     }
 
     this.albums.unshift(album)
@@ -63,7 +63,7 @@ const app = {
     const index = app.albums.indexOf(element)
 
     y.style.borderColor='cornflowerblue'
-    app.albums[index]['fav']='true'
+    app.albums[index]['fav']=true
   }
 }
 
