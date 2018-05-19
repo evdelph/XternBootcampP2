@@ -29,6 +29,10 @@ const app = {
       .querySelector('button#fav')
       .addEventListener('click',this.favItem.bind(this,album))
 
+    item
+      .querySelector('button#up')
+      .addEventListener('click',this.moveUp.bind(this,album))
+
     return item
   },
 
@@ -68,6 +72,22 @@ const app = {
     } else {
       y.style.borderColor='black'
       app.albums[index]['fav']=false
+    }
+  },
+
+  moveUp(element,ev){
+    const selectedItem = document.querySelector(`[data-id="${element.id}"]`)
+    const siblingItem = selectedItem.previousElementSibling
+    const selectedIndex = app.albums.indexOf(element)
+     
+    try{
+      const data = siblingItem.dataset
+      this.albumlist.insertBefore(selectedItem, selectedItem.previousElementSibling)
+      const holder = app.albums[selectedIndex]
+      app.albums[selectedIndex] = app.albums[selectedIndex-1]
+      app.albums[selectedIndex-1] = holder
+    } catch {
+      null
     }
   }
 }
