@@ -33,6 +33,11 @@ const app = {
       .querySelector('button#up')
       .addEventListener('click',this.moveUp.bind(this,album))
 
+    item
+      .querySelector('button#down')
+      .addEventListener('click',this.moveDown.bind(this,album))
+
+
     return item
   },
 
@@ -89,7 +94,24 @@ const app = {
     } catch {
       null
     }
-  }
+  },
+
+  moveDown(element,ev){
+    const selectedItem = document.querySelector(`[data-id="${element.id}"]`)
+    const siblingItem = selectedItem.nextElementSibling
+    const selectedIndex = app.albums.indexOf(element)
+    try{
+      const data = siblingItem.dataset
+      this.albumlist.insertBefore(selectedItem.nextElementSibling,selectedItem)
+      const holder = app.albums[selectedIndex]
+      app.albums[selectedIndex] = app.albums[selectedIndex+1]
+      app.albums[selectedIndex+1] = holder
+    } catch {
+      null
+    }
+  },
+
+
 }
 
 app.init({
