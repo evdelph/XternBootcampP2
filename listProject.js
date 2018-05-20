@@ -38,9 +38,19 @@ const app = {
       .addEventListener('click',this.moveDown.bind(this,album))
 
     //Attempting to do change event, seems to not be even hitting this function
+
+    const changeOnClick = item.querySelector('.albumName')
+    
+    changeOnClick.textContent = album.name
+    changeOnClick.addEventListener('keypress',
+      this.saveChangesOnEnter.bind(this, album, item)
+
+    )
+
     item
-      .querySelector('.albumName')
-      .addEventListener('change', this.changeContent.bind(this,album))
+      .querySelector('button#change')
+      .addEventListener('click', this.changeContent.bind(this,album,item))
+    
 
     return item
   },
@@ -116,15 +126,30 @@ const app = {
   },
 
   //function to change content
-  changeContent(element,ev){
-    const selectedItem = document.querySelector(`[data-id="${element.id}"]`)
-    console.log(selectedItem)
-    const selectedIndex = app.albums.indexOf(element)
-    const selectedValue = selectedItem.textContent
-    console.log(albums[selectedIndex])
-    console.log(selectedValue)
+  changeContent(album, item, ev){
+    const selectedItem = item.querySelector('.albumName')
+    const button = ev.target
 
-    app.albums[selectedIndex] = selectedValue
+    if(selectedItem.isContentEditable==false){
+      selectedItem.setAttribute('contentEditable',true)
+      button.classList = 'success button'
+      button.style.backgroundImage = "url(https://d30y9cdsu7xlg0.cloudfront.net/png/1732217-200.png)"
+      selectedItem.focus()
+      
+      
+    } else {
+      selectedItem.setAttribute('contentEditable',false)
+      button.classList = 'primary button'
+      button.style.backgroundImage = "url(https://d30y9cdsu7xlg0.cloudfront.net/png/1635223-200.png)"
+      album.name = selectedItem.textContent
+    }
+
+  },
+
+  saveChangesOnEnter(album, item, ev){
+    if(ev.key === 'Enter'){
+      this.changeContent(album,item)
+    }
   }
 }
 

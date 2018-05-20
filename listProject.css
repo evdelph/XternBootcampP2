@@ -82,20 +82,27 @@ text{
     font-family: sans-serif;
     margin-left:16%;
 }
+#change{
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/1635223-200.png");
+    background-position: center;
+    background-size: cover;
+    color: rgba(42, 42, 190, 0);
+}
+
+
 #fav{
     background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/1729888-200.png");
     background-position: center;
     background-size: cover;
-    background-color: white;
+    color: rgba(42, 42, 190, 0);
 }
+
 
 #del{
     background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/888071-200.png");
     background-position: center;
     background-size: cover;
     color: rgba(42, 42, 190, 0);
-    padding: 2rem rem;
-    background-color: white;
 }
 
 #up{
@@ -103,7 +110,6 @@ text{
     background-position: center;
     background-size: cover;
     color: rgba(42, 42, 190, 0);
-    background-color: white;
 }
 
 #down{
@@ -111,7 +117,6 @@ text{
     background-position: center;
     background-size: cover;
     color: rgba(42, 42, 190, 0);
-    background-color: white;
 }
 
 #submitType:hover{
