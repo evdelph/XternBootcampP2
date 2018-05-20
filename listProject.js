@@ -37,6 +37,7 @@ const app = {
       .querySelector('button#down')
       .addEventListener('click',this.moveDown.bind(this,album))
 
+    //Attempting to do change event, seems to not be even hitting this function
     item
       .querySelector('.albumName')
       .addEventListener('change', this.changeContent.bind(this,album))
@@ -114,6 +115,7 @@ const app = {
     }
   },
 
+  //function to change content
   changeContent(element,ev){
     const selectedItem = document.querySelector(`[data-id="${element.id}"]`)
     console.log(selectedItem)
