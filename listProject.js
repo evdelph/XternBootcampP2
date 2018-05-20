@@ -37,6 +37,9 @@ const app = {
       .querySelector('button#down')
       .addEventListener('click',this.moveDown.bind(this,album))
 
+    item
+      .querySelector('.albumName')
+      .addEventListener('change', this.changeContent.bind(this,album))
 
     return item
   },
@@ -53,7 +56,7 @@ const app = {
 
     const item = this.renderListItem(album)
     this.albumlist.insertBefore(item, this.albumlist.firstElementChild)
-
+    
     f.reset()
   },
 
@@ -75,7 +78,7 @@ const app = {
       y.style.borderColor='cornflowerblue'
       app.albums[index]['fav']=true
     } else {
-      y.style.borderColor='black'
+      y.style.borderColor='grey'
       app.albums[index]['fav']=false
     }
   },
@@ -111,7 +114,16 @@ const app = {
     }
   },
 
+  changeContent(element,ev){
+    const selectedItem = document.querySelector(`[data-id="${element.id}"]`)
+    console.log(selectedItem)
+    const selectedIndex = app.albums.indexOf(element)
+    const selectedValue = selectedItem.textContent
+    console.log(albums[selectedIndex])
+    console.log(selectedValue)
 
+    app.albums[selectedIndex] = selectedValue
+  }
 }
 
 app.init({

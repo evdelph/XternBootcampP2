@@ -32,13 +32,12 @@ h1{
 
 li{
     background-color: white;
-    border-width: 1px;
-    border-color: rgb(73, 66, 66);
+    border-width: 2px;
+    border-color: rgba(92, 85, 85, 0.815);
     color: rgb(73, 66, 66);
-    margin-left:20%;
-    border-style: solid;
-   
-    
+    border-style: solid;  
+    border-radius: 4px;
+    margin-bottom: .5%;
 }
 
 .input-group-field1 {
@@ -83,6 +82,37 @@ text{
     font-family: sans-serif;
     margin-left:16%;
 }
+#fav{
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/1729888-200.png");
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+}
+
+#del{
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/888071-200.png");
+    background-position: center;
+    background-size: cover;
+    color: rgba(42, 42, 190, 0);
+    padding: 2rem rem;
+    background-color: white;
+}
+
+#up{
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/796310-200.png");
+    background-position: center;
+    background-size: cover;
+    color: rgba(42, 42, 190, 0);
+    background-color: white;
+}
+
+#down{
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/796309-200.png");
+    background-position: center;
+    background-size: cover;
+    color: rgba(42, 42, 190, 0);
+    background-color: white;
+}
 
 #submitType:hover{
     background-color: #4CAF50; 
@@ -103,35 +133,20 @@ text{
     color:black;
 }
 
-.removeButton{
-    border-color: #ec5c52;
-    background-color: whitesmoke;
-    background-image: url("https://cdn1.iconfinder.com/data/icons/office-36/24/Trashcan-512.png");
-    height: 2rem;
-    width: 2rem;
-    margin-right: 0%;
-    float: right;
-    border-radius: 4px;
-    background-size:cover;
-    background-position: center;
-}
-
-.removeButton:hover{
-    background-color:  #ec5c52;
-}
-
-li, .removeButton{
-    display: inline-block;
-}
-
-.album {
+.albumName{
     margin: 0 0.75rem
   }
 
   .template {
     display: none;
   }
-  
-  .actions .button {
-    margin-bottom: 0;
+ 
+ .actions .button {
+   margin-bottom: 0;
+ }
+
+ main {
+    width: 80%;
+    background-color: whitesmoke;
+    margin: 1rem auto;
   }
