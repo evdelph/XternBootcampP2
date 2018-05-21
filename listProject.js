@@ -37,16 +37,6 @@ const app = {
       .querySelector('button#down')
       .addEventListener('click',this.moveDown.bind(this,album))
 
-    //Attempting to do change event, seems to not be even hitting this function
-
-    const changeOnClick = item.querySelector('.albumName')
-    
-    changeOnClick.textContent = album.name
-    changeOnClick.addEventListener('keypress',
-      this.saveChangesOnEnter.bind(this, album, item)
-
-    )
-
     item
       .querySelector('button#change')
       .addEventListener('click', this.changeContent.bind(this,album,item))
@@ -69,15 +59,17 @@ const app = {
     this.albumlist.insertBefore(item, this.albumlist.firstElementChild)
     
     f.reset()
+    f.albumName.focus()
   },
 
-  deleteItem(element,ev){
-    const button = ev.target
-    const x = button.closest('.album')
-
-    x.remove()
-    const index = this.albums.indexOf(element)
-    this.element.splice(index,1)
+  deleteItem(album,ev){
+     // remove from the DOM
+     const item = ev.target.closest('.album')
+     item.remove()
+ 
+     // remove from the array
+     const i = this.albums.indexOf(album)
+     this.albums.splice(i, 1)
   },
 
   favItem(element,ev){
@@ -124,8 +116,6 @@ const app = {
       null
     }
   },
-
-  //function to change content
   changeContent(album, item, ev){
     const selectedItem = item.querySelector('.albumName')
     const button = ev.target
@@ -142,13 +132,6 @@ const app = {
       button.classList = 'primary button'
       button.style.backgroundImage = "url(https://d30y9cdsu7xlg0.cloudfront.net/png/1635223-200.png)"
       album.name = selectedItem.textContent
-    }
-
-  },
-
-  saveChangesOnEnter(album, item, ev){
-    if(ev.key === 'Enter'){
-      this.changeContent(album,item)
     }
   }
 }
