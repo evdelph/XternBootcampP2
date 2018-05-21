@@ -31,15 +31,8 @@ h1{
 }
 
 li{
-    background-color: white;
-    border-width: 2px;
-    border-color: rgba(92, 85, 85, 0.815);
-    color: rgb(73, 66, 66);
-    border-style: solid;  
-    border-radius: 4px;
-    margin-bottom: .5%;
+    background-color:white;
 }
-
 .input-group-field1 {
     border-radius: 0;
     -webkit-box-flex: 1;
@@ -83,7 +76,7 @@ text{
     margin-left:16%;
 }
 #change{
-    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/1635223-200.png");
+    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/1732217-200.png");
     background-position: center;
     background-size: cover;
     color: rgba(42, 42, 190, 0);
@@ -155,3 +148,10 @@ text{
     background-color: whitesmoke;
     margin: 1rem auto;
   }
+
+  .album.fav{
+      background-color:cornflowerblue;
+      border-color: cornflowerblue;
+  }
+
+  

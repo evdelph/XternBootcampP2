@@ -17,9 +17,14 @@ const app = {
     const item = this.template.cloneNode(true)
     item.classList.remove('template')
     item.dataset.id = album.id
-    item
+   
+  const nameSpan = item
       .querySelector('.albumName')
-      .textContent = album.name
+  
+   nameSpan.textContent = album.name
+   nameSpan.addEventListener('keypress',this.saveOnEnter.bind(this,album))
+
+
 
     item
       .querySelector('button#del')
@@ -39,7 +44,7 @@ const app = {
 
     item
       .querySelector('button#change')
-      .addEventListener('click', this.changeContent.bind(this,album,item))
+      .addEventListener('click', this.changeContent.bind(this,album))
     
 
     return item
@@ -63,27 +68,16 @@ const app = {
   },
 
   deleteItem(album,ev){
-     // remove from the DOM
      const item = ev.target.closest('.album')
      item.remove()
  
-     // remove from the array
      const i = this.albums.indexOf(album)
      this.albums.splice(i, 1)
   },
 
-  favItem(element,ev){
-    const button = ev.target
-    const y = button.closest('.album')
-    const index = app.albums.indexOf(element)
-
-    if(app.albums[index]['fav']==false){
-      y.style.borderColor='cornflowerblue'
-      app.albums[index]['fav']=true
-    } else {
-      y.style.borderColor='grey'
-      app.albums[index]['fav']=false
-    }
+  favItem(album,ev){
+    const item = ev.target.closest('.album')
+    album.fav = item.classList.toggle('fav')
   },
 
   moveUp(element,ev){
@@ -116,24 +110,29 @@ const app = {
       null
     }
   },
-  changeContent(album, item, ev){
-    const selectedItem = item.querySelector('.albumName')
-    const button = ev.target
+  changeContent(album, ev){
+    const selectedItem = ev.target.closest('.album')
+    const button = document.querySelector('button#change')
+    const nameField = selectedItem.querySelector('.albumName')
 
-    if(selectedItem.isContentEditable==false){
-      selectedItem.setAttribute('contentEditable',true)
+    if(nameField.isContentEditable==false){
+      nameField.setAttribute('contentEditable',true)
       button.classList = 'success button'
-      button.style.backgroundImage = "url(https://d30y9cdsu7xlg0.cloudfront.net/png/1732217-200.png)"
-      selectedItem.focus()
-      
+      nameField.focus()
       
     } else {
-      selectedItem.setAttribute('contentEditable',false)
+      nameField.setAttribute('contentEditable',false)
       button.classList = 'primary button'
-      button.style.backgroundImage = "url(https://d30y9cdsu7xlg0.cloudfront.net/png/1635223-200.png)"
-      album.name = selectedItem.textContent
+      album.name = nameField.textContent
     }
-  }
+  },
+
+  saveOnEnter(album,ev){
+    if(ev.key==='Enter'){
+      this.changeContent(album,ev)
+    }
+  },
+  
 }
 
 app.init({
